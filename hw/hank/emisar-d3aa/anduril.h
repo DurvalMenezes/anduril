@@ -116,3 +116,54 @@
 // added for convenience
 #define USE_SOFT_FACTORY_RESET
 
+//********* 20240628 DurvalMenezes customizations, done here as apparently the USER feature isn't implemented yet {
+
+//*** No "simple" things for me, no sir ;-)
+#ifdef USE_SIMPLE_UI
+#undef USE_SIMPLE_UI
+#endif
+
+#undef RGB_LED_LOCKOUT_DEFAULT
+#define RGB_LED_LOCKOUT_DEFAULT	0x20 //high, red
+#undef RGB_LED_OFF_DEFAULT
+#define RGB_LED_OFF_DEFAULT 	0x10 //low, red
+
+//*** my default floor/ceiling "smooth ramp" levels
+#undef RAMP_SMOOTH_FLOOR
+#undef RAMP_SMOOTH_CEIL
+#define RAMP_SMOOTH_FLOOR 1
+#define RAMP_SMOOTH_CEIL 120
+
+//*** ditto, "stepped ramp" levels
+#undef RAMP_DISCRETE_FLOOR
+#undef RAMP_DISCRETE_CEIL
+#undef RAMP_DISCRETE_STEPS
+#define RAMP_DISCRETE_FLOOR 10
+#define RAMP_DISCRETE_CEIL RAMP_SMOOTH_CEIL
+#define RAMP_DISCRETE_STEPS 7
+
+//*** We want to default to soft ramping
+#undef RAMP_STYLE
+#define RAMP_STYLE 0  // 0 = smooth, 1 = stepped
+
+//*** enable SOS in the blinkies group
+#define USE_SOS_MODE
+#define USE_SOS_MODE_IN_BLINKY_GROUP
+
+//*** That's the comfortable max temperature for me
+#define DEFAULT_THERM_CEIL 50
+
+//*** don't blink during the ramp or at the ceiling
+#ifdef BLINK_AT_RAMP_MIDDLE
+#undef BLINK_AT_RAMP_MIDDLE
+#endif
+#ifdef BLINK_AT_RAMP_CEIL
+#undef BLINK_AT_RAMP_CEIL
+#endif
+
+//*** default brightness level in ramp mode aka "manual memory"
+#define DEFAULT_MANUAL_MEMORY 1       //ramp level (1-150)
+
+//********* END DurvalMenezes customizations }
+
+//Eof anduril.h
