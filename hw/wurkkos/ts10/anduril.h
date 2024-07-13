@@ -10,9 +10,7 @@
 // uses forward-facing aux LEDs
 #define USE_INDICATOR_LED
 // don't turn on the aux LEDs while main LEDs are on
-#ifdef USE_INDICATOR_LED_WHILE_RAMPING
 #undef USE_INDICATOR_LED_WHILE_RAMPING
-#endif
 // the high button LED mode on this light uses too much power, default to low
 // off mode: low (1)
 // lockout: blinking (3)
@@ -74,9 +72,7 @@
 #define CANDLE_AMPLITUDE 33
 
 // don't blink mid-ramp
-#ifdef BLINK_AT_RAMP_MIDDLE
 #undef BLINK_AT_RAMP_MIDDLE
-#endif
 
 // enable factory reset on 13H without loosening tailcap (required)
 #define USE_SOFT_FACTORY_RESET
@@ -86,29 +82,26 @@
 // the high button LED mode on this light uses too much power, default to low
 // off mode: off (0)
 // lockout: high (2)
-#ifdef INDICATOR_LED_DEFAULT_MODE
 #undef INDICATOR_LED_DEFAULT_MODE
-#endif
 #define INDICATOR_LED_DEFAULT_MODE ((2<<2) + 0)
 
-#ifdef VOLTAGE_FUDGE_FACTOR
 #undef VOLTAGE_FUDGE_FACTOR
-#endif
 #define VOLTAGE_FUDGE_FACTOR 4  // add 0.20V, not 0.25V nor 0.35V
 
+#undef RAMP_SIZE
 #define RAMP_SIZE 150
 
+#undef RAMP_SMOOTH_FLOOR
 #define RAMP_SMOOTH_FLOOR 1
-#ifdef RAMP_SMOOTH_CEIL
+
 #undef RAMP_SMOOTH_CEIL
-#endif
 #define RAMP_SMOOTH_CEIL 120
 // 10 28 46 [65] 83 101 120
+// #undef RAMP_DISCRETE_FLOOR
 #define RAMP_DISCRETE_FLOOR 10
-#ifdef RAMP_DISCRETE_CEIL
 #undef RAMP_DISCRETE_CEIL
-#endif
 #define RAMP_DISCRETE_CEIL RAMP_SMOOTH_CEIL
+#undef RAMP_DISCRETE_STEPS
 #define RAMP_DISCRETE_STEPS 7
 
 // We want to default to soft ramping
@@ -116,23 +109,18 @@
 #define RAMP_STYLE 0  // 0 = smooth, 1 = stepped
 
 // disable 2 click turbo
-#ifdef DEFAULT_2C_STYLE
 #undef DEFAULT_2C_STYLE
-#endif
 #define DEFAULT_2C_STYLE 0
 
 // enable SOS in the blinkies group
 #define USE_SOS_MODE
 #define USE_SOS_MODE_IN_BLINKY_GROUP
 
-#ifdef USE_SIMPLE_UI_RAMPING_TOGGLE
-#undef USE_SIMPLE_UI_RAMPING_TOGGLE
-#endif
-
 // enable factory reset on 13H without loosening tailcap
 #define USE_SOFT_FACTORY_RESET
 
 // stop panicking at ~55% power
+#undef THERM_FASTER_LEVEL
 #define THERM_FASTER_LEVEL 130  // throttle back faster when high
 
 // setting this to 50 instead of the default 45 reportedly allows for constant 300lm output
@@ -141,23 +129,15 @@
 #define DEFAULT_THERM_CEIL 50
 
 // don't blink during the ramp or at the ceiling
-#ifdef BLINK_AT_RAMP_MIDDLE
 #undef BLINK_AT_RAMP_MIDDLE
-#endif
-#ifdef BLINK_AT_RAMP_CEIL
 #undef BLINK_AT_RAMP_CEIL
-#endif
 
 // default brightness level in ramp mode aka "manual memory"
+#undef DEFAULT_MANUAL_MEMORY
 #define DEFAULT_MANUAL_MEMORY 1       //ramp level (1-150)
 
 // DO NOT include a simplified UI for non-enthusiasts?
 #undef USE_SIMPLE_UI
-
-// No simple UI here, thank you very much... 
-#ifdef USE_SIMPLE_UI
-#undef USE_SIMPLE_UI
-#endif
 
 // Allow 3C in Simple UI for switching between smooth and stepped ramping
 #define USE_SIMPLE_UI_RAMPING_TOGGLE
@@ -166,9 +146,7 @@
 #define USE_EXTENDED_SIMPLE_UI
 
 // blink numbers on the main LEDs by default
-#ifdef DEFAULT_BLINK_CHANNEL
 #undef DEFAULT_BLINK_CHANNEL
-#endif
 #define DEFAULT_BLINK_CHANNEL  CM_MAIN
 
 //********* END DurvalMenezes customizations }

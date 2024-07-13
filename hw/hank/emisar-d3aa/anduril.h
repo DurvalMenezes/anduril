@@ -61,9 +61,7 @@
 #define SIMPLE_UI_STEPS      5
 
 // don't blink mid-ramp
-#ifdef BLINK_AT_RAMP_MIDDLE
 #undef BLINK_AT_RAMP_MIDDLE
-#endif
 
 // thermal config
 
@@ -100,9 +98,7 @@
 #define POLICE_COLOR_STROBE_CH2        CM_AUXBLU
 
 // the aux LEDs are front-facing, so turn them off while main LEDs are on
-#ifdef USE_INDICATOR_LED_WHILE_RAMPING
 #undef USE_INDICATOR_LED_WHILE_RAMPING
-#endif
 
 
 // Misc
@@ -119,9 +115,7 @@
 //********* 20240628 DurvalMenezes customizations, done here as apparently the USER feature isn't implemented yet {
 
 //*** No "simple" things for me, no sir ;-)
-#ifdef USE_SIMPLE_UI
 #undef USE_SIMPLE_UI
-#endif
 
 #undef RGB_LED_LOCKOUT_DEFAULT
 #define RGB_LED_LOCKOUT_DEFAULT	0x20 //high, red
@@ -130,16 +124,16 @@
 
 //*** my default floor/ceiling "smooth ramp" levels
 #undef RAMP_SMOOTH_FLOOR
-#undef RAMP_SMOOTH_CEIL
 #define RAMP_SMOOTH_FLOOR 1
+#undef RAMP_SMOOTH_CEIL
 #define RAMP_SMOOTH_CEIL 120
 
 //*** ditto, "stepped ramp" levels
 #undef RAMP_DISCRETE_FLOOR
-#undef RAMP_DISCRETE_CEIL
-#undef RAMP_DISCRETE_STEPS
 #define RAMP_DISCRETE_FLOOR 10
+#undef RAMP_DISCRETE_CEIL
 #define RAMP_DISCRETE_CEIL RAMP_SMOOTH_CEIL
+#undef RAMP_DISCRETE_STEPS
 #define RAMP_DISCRETE_STEPS 7
 
 //*** We want to default to soft ramping
@@ -151,17 +145,15 @@
 #define USE_SOS_MODE_IN_BLINKY_GROUP
 
 //*** That's the comfortable max temperature for me
+#undef DEFAULT_THERM_CEIL
 #define DEFAULT_THERM_CEIL 50
 
 //*** don't blink during the ramp or at the ceiling
-#ifdef BLINK_AT_RAMP_MIDDLE
 #undef BLINK_AT_RAMP_MIDDLE
-#endif
-#ifdef BLINK_AT_RAMP_CEIL
 #undef BLINK_AT_RAMP_CEIL
-#endif
 
 //*** default brightness level in ramp mode aka "manual memory"
+#undef DEFAULT_MANUAL_MEMORY
 #define DEFAULT_MANUAL_MEMORY 1       //ramp level (1-150)
 
 //********* END DurvalMenezes customizations }
